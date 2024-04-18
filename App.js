@@ -1,20 +1,54 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export default function App() {
+import Home from './src/pages/Home';
+import Cadastro from './src/pages/Cadastro';
+import Editar from './src/pages/Editar';
+import PesquisaClientes from './src/pages/PesquisaClientes';
+import TodosClientes from './src/pages/TodosClientes';
+
+const Stack = createNativeStackNavigator()
+
+export default function stackRoutes() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    <NavigationContainer>
+      <Stack.Navigator>
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+        <Stack.Screen
+          name="home"
+          component={Home}
+          options={{
+            headerShown: false
+          }}
+        />
+
+        <Stack.Screen
+          name="Cadastro"
+          component={Cadastro}
+
+        />
+
+        <Stack.Screen
+          name="Editar"
+          component={Editar}
+
+        />
+
+        <Stack.Screen
+          name="PesquisaClientes"
+          component={PesquisaClientes}
+
+        />
+
+        <Stack.Screen
+          name="TodosClientes"
+          component={TodosClientes}
+
+        />
+
+      </Stack.Navigator>
+    </NavigationContainer>
+
+  )
+}
